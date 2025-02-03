@@ -4,6 +4,8 @@ import topImage from "../assets/originalcap.png";
 import bottomImage from "../assets/bottle down.png";
 import leftImage from "../assets/newbottle.png";
 import rightImage from "../assets/newbottle.png";
+import newLeftImage from "../assets/hand bottle.png";  // Placeholder for new left image
+import newRightImage from "../assets/written.png";  // Placeholder for new right image
 
 function Home() {
   return (
@@ -26,7 +28,7 @@ function Home() {
       {/* Main Section */}
       <div className="flex flex-col items-center justify-center text-center mt-20">
         {/* Large Circle */}
-        <div className="relative w-96 h-96 border-2 border-blue-300 rounded-full flex items-center justify-center">
+        <div className="relative w-96 h-96 border-2 border-blue-300 rounded-full flex flex-col items-center justify-center p-5">
           {/* Animated Top Image */}
           <motion.img 
             src={topImage} 
@@ -37,7 +39,7 @@ function Home() {
             transition={{ duration: 1.5, ease: "easeOut" }}  // Smooth animation
           />
 
-          <h2 className="text-5xl font-bold leading-tight">
+          <h2 className="text-3xl font-bold leading-tight">
             The Ultimate Companion for Hydration
           </h2>
           
@@ -56,9 +58,34 @@ function Home() {
         <img src={bottomImage} alt="Bottom Bottle" className="mt-10 w-40" />
       </div>
 
-      {/* Side Floating Images */}
-      <img src={leftImage} alt="Left" className="absolute bottom-10 left-10 w-20" />
-      <img src={rightImage} alt="Right" className="absolute bottom-10 right-10 w-20" />
+      {/* Floating Side Images (moved above the new images) */}
+      <div className="absolute top-1/4 left-10 w-20">
+        <img src={leftImage} alt="Left" className="w-full h-auto" />
+      </div>
+      <div className="absolute top-1/4 right-10 w-20">
+        <img src={rightImage} alt="Right" className="w-full h-auto" />
+      </div>
+
+      {/* Two New Images Below */}
+      <div className="flex justify-between mt-20 px-10">
+        {/* First New Image covering 50% of screen width */}
+        <div className="w-1/2">
+          <img 
+            src={newLeftImage} 
+            alt="New Left" 
+            className="w-full h-auto object-cover"
+          />
+        </div>
+
+        {/* Second New Image covering 50% of screen width */}
+        <div className="w-1/2">
+          <img 
+            src={newRightImage} 
+            alt="New Right" 
+            className="w-full h-auto object-cover"
+          />
+        </div>
+      </div>
     </div>
   );
 }
