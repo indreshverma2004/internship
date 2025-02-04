@@ -1,8 +1,8 @@
 import React, { useState } from "react"; 
 import { motion, useScroll } from "framer-motion"; 
-import topImage from "../assets/cap2.png"; 
-import bottomImage from "../assets/down2.png"; 
-import newBottomImage from "../assets/full bottle.png"; // Replace with your new image 
+import topImage from "../assets/first.png"; 
+import bottomImage from "../assets/second.png"; 
+import newBottomImage from "../assets/full bottle.png"; 
 import leftImage from "../assets/newbottle.png"; 
 import rightImage from "../assets/newbottle.png"; 
 import newLeftImage from "../assets/hand bottle.png"; 
@@ -19,7 +19,6 @@ function Home() {
 
   return (
     <div className="relative min-h-screen bg-white">
-      {/* Navbar */}
       <nav className="flex justify-between items-center px-10 py-5">
         <h1 className="text-3xl font-bold">BOTOL</h1>
         <div className="space-x-6">
@@ -34,7 +33,6 @@ function Home() {
         </div>
       </nav>
 
-      {/* Floating Side Images */}
       <div className="absolute top-[13%] left-20 w-40">
         <img src={leftImage} alt="Left" className="w-full h-auto" />
       </div>
@@ -42,7 +40,6 @@ function Home() {
         <img src={rightImage} alt="Right" className="w-full h-auto" />
       </div>
 
-      {/* Two New Images Positioned Below Floating Images */}
       <div className="absolute top-[20%] left-10 w-1/2">
         <img src={newLeftImage} alt="New Left" className="w-full h-auto object-cover" />
       </div>
@@ -54,17 +51,13 @@ function Home() {
         />
       </div>
 
-      {/* Main Section */}
       <div className="flex flex-col items-center justify-center text-center mt-[5%]">
-        {/* Large Circle */}
         <motion.div 
   className="relative w-96 h-96 border-2 border-blue-300 rounded-full flex flex-col items-center justify-center p-5"
-  initial={{ scale: 0, backgroundColor: "#ffffff", opacity: 0 }} // Start hidden
-  animate={{ scale: 0.9, backgroundColor: "#ffffff", opacity: 1 }} // Expand to final size
-  transition={{ duration: 1.5, delay: 1, ease: "easeInOut" }} // Wait 1s, then grow in 1.5s
+  initial={{ scale: 0, backgroundColor: "#ffffff", opacity: 0 }}
+  animate={{ scale: 0.9, backgroundColor: "#ffffff", opacity: 1 }} 
+  transition={{ duration: 1.5, delay: 1, ease: "easeInOut" }}
 >
-  {/* Circle animation */}
-{/* </motion.div> */}
           
 
           <h1 className="text-3xl font-bold leading-tight">
@@ -76,7 +69,6 @@ function Home() {
           </p>
         </motion.div>
 
-        {/* Animated Top Image */}
         {!showNewImage && (
             <motion.img 
             src={topImage} 
@@ -90,7 +82,6 @@ function Home() {
           
           )}
 
-        {/* Bottom Image */}
         {!showNewImage ? (
           <motion.img 
             src={bottomImage} 
@@ -111,12 +102,10 @@ function Home() {
         )}
       </div>
 
-      {/* Hydration Essentials Section */}
       <div className="mt-[23%] text-center">
         <h3 className="text-4xl font-bold text-gray-800">Hydration Essentials</h3>
       </div>
 
-      {/* Three Image Boxes */}
       <div className="flex justify-between mt-10 px-10">
         {[image1, image2, image3].map((img, index) => (
           <div key={index} className="w-1/3 p-4 border-2 border-gray-200 rounded-lg text-center">
@@ -129,7 +118,6 @@ function Home() {
         ))}
       </div>
 
-      {/* Another set of Three Image Boxes */}
       <div className="flex justify-between mt-10 px-10">
         {[image2, image3, image1].map((img, index) => (
           <div key={index} className="w-1/3 p-4 border-2 border-gray-200 rounded-lg text-center">
@@ -142,7 +130,6 @@ function Home() {
         ))}
       </div>
 
-      {/* Full-width Image */}
       <div className="mt-20 w-full">
         <img src={fullWidthImage} alt="Full Width Image" className="w-full h-auto object-cover" />
       </div>
