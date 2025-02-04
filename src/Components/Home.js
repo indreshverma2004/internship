@@ -1,7 +1,7 @@
 import React, { useState } from "react"; 
 import { motion, useScroll } from "framer-motion"; 
-import topImage from "../assets/originalcap.png"; 
-import bottomImage from "../assets/bottle down.png"; 
+import topImage from "../assets/cap2.png"; 
+import bottomImage from "../assets/down2.png"; 
 import newBottomImage from "../assets/full bottle.png"; // Replace with your new image 
 import leftImage from "../assets/newbottle.png"; 
 import rightImage from "../assets/newbottle.png"; 
@@ -58,24 +58,14 @@ function Home() {
       <div className="flex flex-col items-center justify-center text-center mt-[5%]">
         {/* Large Circle */}
         <motion.div 
-          className="relative w-96 h-96 border-2 border-blue-300 rounded-full flex flex-col items-center justify-center p-5"
-          initial={{ scale: 0.5, backgroundColor: "#ffffff" }}
-          animate={{ scale: 0.9, backgroundColor: "#ffffff" }}
-          transition={{ duration: 3, ease: "easeInOut" }}
-        >
-          {/* Animated Top Image */}
-          {!showNewImage && (
-            <motion.img 
-            src={topImage} 
-            alt="Top Bottle" 
-            className="absolute w-24"
-            initial={{ y: 0, opacity: 1 }} // Start from initial position
-            animate={{ y: [0, -300, 420], opacity: [1, 1, 1] }} // Moves up first, then slides back down
-            transition={{ duration: 5, times: [0, 0.5, 1], ease: "easeInOut" }} // Smooth movement
-          />
+  className="relative w-96 h-96 border-2 border-blue-300 rounded-full flex flex-col items-center justify-center p-5"
+  initial={{ scale: 0.9, backgroundColor: "#ffffff", opacity: 0 }} // Start hidden
+  animate={{ scale: 0.9, backgroundColor: "#ffffff", opacity: 1 }} // Expand to final size
+  transition={{ duration: 1.5, delay: 1, ease: "easeInOut" }} // Wait 1s, then grow in 1.5s
+>
+  {/* Circle animation */}
+{/* </motion.div> */}
           
-          
-          )}
 
           <h2 className="text-3xl font-bold leading-tight">
             The Ultimate Companion for Hydration
@@ -86,15 +76,29 @@ function Home() {
           </p>
         </motion.div>
 
+        {/* Animated Top Image */}
+        {!showNewImage && (
+            <motion.img 
+            src={topImage} 
+            alt="Top Bottle" 
+            className="absolute w-24"
+            initial={{ y: -500, opacity: 1 }} // Start from initial position
+            animate={{ y: [-320, -600, 100], opacity: [0.9, 1, 1] }} // Moves up first, then slides back down
+            transition={{ duration: 5, delay: 1.5, times: [0, 0.5, 1], ease: "easeInOut" }} // Smooth movement
+          />
+          
+          
+          )}
+
         {/* Bottom Image */}
         {!showNewImage ? (
           <motion.img 
             src={bottomImage} 
             alt="Bottom Bottle" 
             className="mt-10 w-40"
-            initial={{ y: -100, opacity: 0 }}
+            initial={{ y: -200, opacity: 1 }}
             animate={{ y: 180, opacity: 1 }}
-            transition={{ duration: 5, ease: "easeOut" }}
+            transition={{ duration: 5,delay:1.5, ease: "easeOut" }}
             onAnimationComplete={() => setShowNewImage(true)}
           />
         ) : (
