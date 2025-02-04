@@ -1,5 +1,6 @@
 import React, { useState } from "react"; 
 import { motion, useScroll } from "framer-motion"; 
+import {Link} from "react-router-dom";
 import topImage from "../assets/first.png"; 
 import bottomImage from "../assets/second.png"; 
 import newBottomImage from "../assets/full bottle.png"; 
@@ -27,6 +28,9 @@ function Home() {
           <a href="#" className="text-gray-600 hover:text-black">About</a>
           <a href="#" className="text-gray-600 hover:text-black">Journal</a>
           <a href="#" className="text-gray-600 hover:text-black">Custom</a>
+          <Link to="/sale" className="bg-red-500 text-white font-semibold px-4 py-2 rounded-md hover:bg-red-600 transition">
+  Sale
+</Link>
           <button className="bg-blue-500 text-white px-5 py-2 rounded-full hover:bg-blue-600">
             Inquiry Now
           </button>
