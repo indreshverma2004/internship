@@ -1,20 +1,18 @@
 import React from "react";
-import { motion, useScroll } from "framer-motion";  // Import Framer Motion and useScroll
-import topImage from "../assets/originalcap.png";  
+import { motion, useScroll } from "framer-motion";
+import topImage from "../assets/bottle cap.png";
 import bottomImage from "../assets/bottle down.png";
 import leftImage from "../assets/newbottle.png";
 import rightImage from "../assets/newbottle.png";
-import newLeftImage from "../assets/hand bottle.png";  
-import newRightImage from "../assets/written.png"; 
+import newLeftImage from "../assets/hand bottle.png";
+import newRightImage from "../assets/written.png";
 import image1 from "../assets/bluebottle.png";
-import image2 from "../assets/black bottle.png"; 
+import image2 from "../assets/black bottle.png";
 import image3 from "../assets/newbottle2.png";
-import fullWidthImage from "../assets/background.png";  // Add full-width image
+import fullWidthImage from "../assets/background.png";
 import Footer from "./Footer";
 
-
 function Home() {
-  // Scroll hook to detect scroll position
   const { scrollYProgress } = useScroll();
 
   return (
@@ -34,29 +32,48 @@ function Home() {
         </div>
       </nav>
 
+      {/* Floating Side Images (Positioned at the top, visible on load) */}
+      <div className="absolute top-[13%] left-20 w-40">
+        <img src={leftImage} alt="Left" className="w-full h-auto" />
+      </div>
+      <div className="absolute top-[13%] right-20 w-40">
+        <img src={rightImage} alt="Right" className="w-full h-auto" />
+      </div>
+
+      {/* Two New Images Positioned Below Floating Images */}
+      <div className="absolute top-[20%] left-10 w-1/2">
+        <img src={newLeftImage} alt="New Left" className="w-full h-auto object-cover" />
+      </div>
+      <div className="absolute top-[20%] right-10 w-1/2">
+        <motion.img 
+          src={newRightImage} 
+          alt="New Right" 
+          className="w-full h-auto max-h-[600px] object-contain"
+        />
+      </div>
+
       {/* Main Section */}
-      <div className="flex flex-col items-center justify-center text-center mt-20">
+      <div className="flex flex-col items-center justify-center text-center mt-[5%]">
         {/* Large Circle */}
         <motion.div 
           className="relative w-96 h-96 border-2 border-blue-300 rounded-full flex flex-col items-center justify-center p-5"
-          initial={{ scale: 0.5, backgroundColor: "#ffffff" }}  // Initial size and color
-          animate={{ scale: 0.90, backgroundColor: "#ffffff" }}  // Final size and color
-          transition={{ duration: 2, ease: "easeInOut" }}  // Smooth animation
+          initial={{ scale: 0.5, backgroundColor: "#ffffff" }}
+          animate={{ scale: 0.9, backgroundColor: "#ffffff" }}
+          transition={{ duration: 2, ease: "easeInOut" }}
         >
           {/* Animated Top Image */}
           <motion.img 
             src={topImage} 
             alt="Top Bottle" 
             className="absolute w-24"
-            initial={{ y: -100, opacity: 0 }}   // Start above
-            animate={{ y: 1000, opacity: 1 }}    // Move down into place
-            transition={{ duration: 1.5, ease: "easeOut" }}  // Smooth animation
+            initial={{ y: -100, opacity: 0 }}
+            animate={{ y: 420, opacity: 1 }}
+            transition={{ duration: 1.5, ease: "easeOut" }}
           />
 
           <h2 className="text-3xl font-bold leading-tight">
             The Ultimate Companion for Hydration
           </h2>
-          
           <p className="text-gray-600 mt-3">
             We believe in the power of hydration. <br />
             Our mission is simple yet vital.
@@ -68,114 +85,46 @@ function Home() {
           src={bottomImage} 
           alt="Bottom Bottle" 
           className="mt-10 w-40"
-          initial={{ y: -100, opacity: 0 }}   // Start above
-            animate={{ y: 700, opacity: 1 }}    // Move down into place
-            transition={{ duration: 1.5, ease: "easeOut" }}  // Smooth animation
-        //   style={{ opacity: scrollYProgress }}
+          initial={{ y: -100, opacity: 0 }}
+          animate={{ y: 180, opacity: 1 }}
+          transition={{ duration: 1.5, ease: "easeOut" }}
         />
       </div>
 
-      {/* Floating Side Images positioned lower but visible on load */}
-<div className="absolute top-[13%] left-10 w-20">
-  <img src={leftImage} alt="Left" className="w-full h-auto" />
-</div>
-
-<div className="absolute top-[13%] right-10 w-20">
-  <img src={rightImage} alt="Right" className="w-full h-auto" />
-</div>
-
-
-      {/* Two New Images Below */}
-      <div className="flex justify-between mt-20 px-10">
-        <div className="w-1/2">
-          <img 
-            src={newLeftImage} 
-            alt="New Left" 
-            className="w-full h-auto object-cover"
-          />
-        </div>
-        <div className="w-1/2">
-          <motion.img 
-            src={newRightImage} 
-            alt="New Right" 
-            className="w-full h-auto object-cover"
-            // style={{ opacity: scrollYProgress }}  
-          />
-        </div>
-      </div>
-
-      {/* Hydration Essentials */}
-      <div className="mt-20 text-center">
+      {/* Hydration Essentials Section */}
+      <div className="mt-[23%] text-center">
         <h3 className="text-4xl font-bold text-gray-800">Hydration Essentials</h3>
       </div>
 
-      {/* Three Boxes for Images */}
+      {/* Three Image Boxes */}
       <div className="flex justify-between mt-10 px-10">
-        {/* Box 1 */}
-        <div className="w-1/3 p-4 border-2 border-gray-200 rounded-lg text-center">
-          <img src={image1} alt="New Bottle 1" className="w-full h-auto object-cover" />
-          <p className="mt-2 text-xl font-semibold">New Bottle</p>
-          <button className="mt-2 bg-blue-500 text-white px-6 py-2 rounded-full hover:bg-blue-600">
-            Learn More
-          </button>
-        </div>
-
-        {/* Box 2 */}
-        <div className="w-1/3 p-4 border-2 border-gray-200 rounded-lg text-center">
-          <img src={image2} alt="New Bottle 2" className="w-full h-auto object-cover" />
-          <p className="mt-2 text-xl font-semibold">New Bottle</p>
-          <button className="mt-2 bg-blue-500 text-white px-6 py-2 rounded-full hover:bg-blue-600">
-            Learn More
-          </button>
-        </div>
-
-        {/* Box 3 */}
-        <div className="w-1/3 p-4 border-2 border-gray-200 rounded-lg text-center">
-          <img src={image3} alt="New Bottle 3" className="w-full h-auto object-cover" />
-          <p className="mt-2 text-xl font-semibold">New Bottle</p>
-          <button className="mt-2 bg-blue-500 text-white px-6 py-2 rounded-full hover:bg-blue-600">
-            Learn More
-          </button>
-        </div>
+        {[image1, image2, image3].map((img, index) => (
+          <div key={index} className="w-1/3 p-4 border-2 border-gray-200 rounded-lg text-center">
+            <img src={img} alt="Bottle" className="w-full h-auto object-cover" />
+            <p className="mt-2 text-xl font-semibold">New Bottle</p>
+            <button className="mt-2 bg-blue-500 text-white px-6 py-2 rounded-full hover:bg-blue-600">
+              Learn More
+            </button>
+          </div>
+        ))}
       </div>
 
-      {/* Another set of Three Boxes */}
+      {/* Another set of Three Image Boxes */}
       <div className="flex justify-between mt-10 px-10">
-        {/* Box 4 */}
-        <div className="w-1/3 p-4 border-2 border-gray-200 rounded-lg text-center">
-          <img src={image2} alt="New Bottle 4" className="w-full h-auto object-cover" />
-          <p className="mt-2 text-xl font-semibold">New Bottle</p>
-          <button className="mt-2 bg-blue-500 text-white px-6 py-2 rounded-full hover:bg-blue-600">
-            Learn More
-          </button>
-        </div>
-
-        {/* Box 5 */}
-        <div className="w-1/3 p-4 border-2 border-gray-200 rounded-lg text-center">
-          <img src={image3} alt="New Bottle 5" className="w-full h-auto object-cover" />
-          <p className="mt-2 text-xl font-semibold">New Bottle</p>
-          <button className="mt-2 bg-blue-500 text-white px-6 py-2 rounded-full hover:bg-blue-600">
-            Learn More
-          </button>
-        </div>
-
-        {/* Box 6 */}
-        <div className="w-1/3 p-4 border-2 border-gray-200 rounded-lg text-center">
-          <img src={image1} alt="New Bottle 6" className="w-full h-auto object-cover" />
-          <p className="mt-2 text-xl font-semibold">New Bottle</p>
-          <button className="mt-2 bg-blue-500 text-white px-6 py-2 rounded-full hover:bg-blue-600">
-            Learn More
-          </button>
-        </div>
+        {[image2, image3, image1].map((img, index) => (
+          <div key={index} className="w-1/3 p-4 border-2 border-gray-200 rounded-lg text-center">
+            <img src={img} alt="Bottle" className="w-full h-auto object-cover" />
+            <p className="mt-2 text-xl font-semibold">New Bottle</p>
+            <button className="mt-2 bg-blue-500 text-white px-6 py-2 rounded-full hover:bg-blue-600">
+              Learn More
+            </button>
+          </div>
+        ))}
       </div>
 
       {/* Full-width Image */}
       <div className="mt-20 w-full">
-        <img 
-          src={fullWidthImage} 
-          alt="Full Width Image" 
-          className="w-full h-auto object-cover"
-        />
+        <img src={fullWidthImage} alt="Full Width Image" className="w-full h-auto object-cover" />
       </div>
 
       <Footer/>
