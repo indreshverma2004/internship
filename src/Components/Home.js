@@ -17,9 +17,7 @@ import Footer from "./Footer";
 function Home() {
   const { scrollYProgress } = useScroll();
   const [showNewImage, setShowNewImage] = useState(false);
-  const [isDarkMode, setIsDarkMode] = useState(false); // State for dark mode
-
-  // Function to toggle between light and dark mode
+  const [isDarkMode, setIsDarkMode] = useState(false); 
   const toggleDarkMode = () => {
     setIsDarkMode(!isDarkMode);
   };
@@ -37,7 +35,6 @@ function Home() {
           <Link to="/sale" className="bg-red-500 text-white font-semibold px-4 py-2 rounded-md hover:bg-red-600 transition">
             Sale
           </Link>
-          {/* Dark/Light Mode Toggle Button */}
           <button 
             onClick={toggleDarkMode} 
             className={`bg-${isDarkMode ? 'yellow-500' : 'gray-500'} text-blue font-semibold px-4 py-2 rounded-md hover:bg-${isDarkMode ? 'yellow-400' : 'gray-400'}`}>

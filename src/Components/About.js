@@ -12,7 +12,6 @@ function About() {
     { year: 2023, sales: 22000 },
   ];
 
-  // Prepare data for the graph
   const years = randomSalesData.map(data => data.year);
   const sales = randomSalesData.map(data => data.sales);
 
@@ -86,7 +85,6 @@ function About() {
         Over the years, Botol has seen incredible growth, and we owe it all to our loyal customers and their trust in our product. Here are some of our highlights over the last few years:
       </p>
 
-      {/* Sales Graph */}
       <div className="mb-10">
         <Line data={data} options={options} />
       </div>
@@ -103,7 +101,6 @@ function About() {
         We are thrilled to continue growing and evolving with the support of our customers. Every year, we strive to provide the best products and continue to lead the market with exceptional designs and unmatched quality. Join us in this hydration revolution and experience the difference.
       </p>
 
-      {/* Reach and Popularity */}
       <h2 className="text-3xl font-semibold text-gray-800 mb-4">Our Global Reach</h2>
       <p className="text-lg text-gray-700 mb-6">
         Botol has become a household name worldwide. Our products have reached over 30 countries, from the United States to Japan, and are now being used by millions of satisfied customers. Whether you're an athlete, a busy professional, or someone who values staying hydrated, our bottles are designed for all. 
