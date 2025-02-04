@@ -1,6 +1,6 @@
 import React, { useState } from "react"; 
 import { motion, useScroll } from "framer-motion"; 
-import {Link} from "react-router-dom";
+import { Link } from "react-router-dom"; 
 import topImage from "../assets/first.png"; 
 import bottomImage from "../assets/second.png"; 
 import newBottomImage from "../assets/full bottle.png"; 
@@ -17,20 +17,32 @@ import Footer from "./Footer";
 function Home() {
   const { scrollYProgress } = useScroll();
   const [showNewImage, setShowNewImage] = useState(false);
+  const [isDarkMode, setIsDarkMode] = useState(false); // State for dark mode
+
+  // Function to toggle between light and dark mode
+  const toggleDarkMode = () => {
+    setIsDarkMode(!isDarkMode);
+  };
 
   return (
-    <div className="relative min-h-screen bg-white">
+    <div className={`relative min-h-screen ${isDarkMode ? 'bg-gray-800 text-white' : 'bg-white text-black'}`}>
       <nav className="flex justify-between items-center px-10 py-5">
         <h1 className="text-3xl font-bold">BOTOL</h1>
         <div className="space-x-6">
-          <a href="#" className="text-gray-600 hover:text-black">Shop</a>
-          <a href="#" className="text-gray-600 hover:text-black">Contact us</a>
-          <a href="#" className="text-gray-600 hover:text-black">About</a>
-          <a href="#" className="text-gray-600 hover:text-black">Journal</a>
-          <a href="#" className="text-gray-600 hover:text-black">Custom</a>
+          <Link to="/sale" className="text-gray-400 hover:text-black">Shop</Link>
+          <Link to="/about" className="text-gray-400 hover:text-black">Contact us</Link>
+          <Link to="/about" className="text-gray-400 hover:text-black">About</Link>
+          <Link to="/about" className="text-gray-400 hover:text-black">Journal</Link>
+          <Link to="/about" className="text-gray-400 hover:text-black">Custom</Link>
           <Link to="/sale" className="bg-red-500 text-white font-semibold px-4 py-2 rounded-md hover:bg-red-600 transition">
-  Sale
-</Link>
+            Sale
+          </Link>
+          {/* Dark/Light Mode Toggle Button */}
+          <button 
+            onClick={toggleDarkMode} 
+            className={`bg-${isDarkMode ? 'yellow-500' : 'gray-500'} text-blue font-semibold px-4 py-2 rounded-md hover:bg-${isDarkMode ? 'yellow-400' : 'gray-400'}`}>
+            {isDarkMode ? 'Light Mode' : 'Dark Mode'}
+          </button>
           <button className="bg-blue-500 text-white px-5 py-2 rounded-full hover:bg-blue-600">
             Inquiry Now
           </button>
@@ -57,34 +69,29 @@ function Home() {
 
       <div className="flex flex-col items-center justify-center text-center mt-[5%]">
         <motion.div 
-  className="relative w-96 h-96 border-2 border-blue-300 rounded-full flex flex-col items-center justify-center p-5"
-  initial={{ scale: 0, backgroundColor: "#ffffff", opacity: 0 }}
-  animate={{ scale: 0.9, backgroundColor: "#ffffff", opacity: 1 }} 
-  transition={{ duration: 1.5, delay: 1, ease: "easeInOut" }}
->
-          
-
-          <h1 className="text-3xl font-bold leading-tight">
+          className="relative w-96 h-96 border-2 border-blue-300 rounded-full flex flex-col items-center justify-center p-5"
+          initial={{ scale: 0, backgroundColor: "#ffffff", opacity: 0 }}
+          animate={{ scale: 0.9, backgroundColor: "#ffffff", opacity: 1 }} 
+          transition={{ duration: 1.5, delay: 1, ease: "easeInOut" }}
+        >
+          <h1 className="text-3xl font-bold leading-tight text-black">
             The Ultimate Companion for Hydration
           </h1>
-          <p className="text-gray-600 mt-3">
-            We believe in the power of hydration. <br />
-            Our mission is simple yet vital.
+          <p className="mt-3 text-black">
+            We believe in the power of hydration. <br /> Our mission is simple yet vital.
           </p>
         </motion.div>
 
         {!showNewImage && (
-            <motion.img 
+          <motion.img 
             src={topImage} 
             alt="Top Bottle" 
             className="absolute w-24"
-            initial={{ y: -500, opacity: 1 }} // Start from initial position
-            animate={{ y: [-330, -600, 50], opacity: [0.9, 1, 1] }} // Moves up first, then slides back down
-            transition={{ duration: 5, delay: 1.5, times: [0, 0.5, 1], ease: "easeInOut" }} // Smooth movement
+            initial={{ y: -500, opacity: 1 }} 
+            animate={{ y: [-330, -600, 50], opacity: [0.9, 1, 1] }} 
+            transition={{ duration: 5, delay: 1.5, times: [0, 0.5, 1], ease: "easeInOut" }} 
           />
-          
-          
-          )}
+        )}
 
         {!showNewImage ? (
           <motion.img 
@@ -93,7 +100,7 @@ function Home() {
             className="mt-10 w-40"
             initial={{ y: -200, opacity: 1 }}
             animate={{ y: 180, opacity: 1 }}
-            transition={{ duration: 5,delay:1.5, ease: "easeOut" }}
+            transition={{ duration: 5, delay: 1.5, ease: "easeOut" }}
             onAnimationComplete={() => setShowNewImage(true)}
           />
         ) : (
@@ -107,7 +114,7 @@ function Home() {
       </div>
 
       <div className="mt-[23%] text-center">
-        <h3 className="text-4xl font-bold text-gray-800">Hydration Essentials</h3>
+        <h3 className="text-4xl font-bold">Hydration Essentials</h3>
       </div>
 
       <div className="flex justify-between mt-10 px-10">
