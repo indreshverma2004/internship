@@ -59,7 +59,7 @@ function Home() {
         {/* Large Circle */}
         <motion.div 
   className="relative w-96 h-96 border-2 border-blue-300 rounded-full flex flex-col items-center justify-center p-5"
-  initial={{ scale: 0.9, backgroundColor: "#ffffff", opacity: 0 }} // Start hidden
+  initial={{ scale: 0, backgroundColor: "#ffffff", opacity: 0 }} // Start hidden
   animate={{ scale: 0.9, backgroundColor: "#ffffff", opacity: 1 }} // Expand to final size
   transition={{ duration: 1.5, delay: 1, ease: "easeInOut" }} // Wait 1s, then grow in 1.5s
 >
@@ -67,9 +67,9 @@ function Home() {
 {/* </motion.div> */}
           
 
-          <h2 className="text-3xl font-bold leading-tight">
+          <h1 className="text-3xl font-bold leading-tight">
             The Ultimate Companion for Hydration
-          </h2>
+          </h1>
           <p className="text-gray-600 mt-3">
             We believe in the power of hydration. <br />
             Our mission is simple yet vital.
@@ -83,7 +83,7 @@ function Home() {
             alt="Top Bottle" 
             className="absolute w-24"
             initial={{ y: -500, opacity: 1 }} // Start from initial position
-            animate={{ y: [-320, -600, 100], opacity: [0.9, 1, 1] }} // Moves up first, then slides back down
+            animate={{ y: [-330, -600, 50], opacity: [0.9, 1, 1] }} // Moves up first, then slides back down
             transition={{ duration: 5, delay: 1.5, times: [0, 0.5, 1], ease: "easeInOut" }} // Smooth movement
           />
           
