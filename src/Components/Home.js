@@ -66,13 +66,15 @@ function Home() {
           {/* Animated Top Image */}
           {!showNewImage && (
             <motion.img 
-              src={topImage} 
-              alt="Top Bottle" 
-              className="absolute w-24"
-              initial={{ y: -100, opacity: 0 }}
-              animate={{ y: 420, opacity: 1 }}
-              transition={{ duration: 1.5, ease: "easeOut" }}
-            />
+            src={topImage} 
+            alt="Top Bottle" 
+            className="absolute w-24"
+            initial={{ y: 0, opacity: 1 }} // Start from initial position
+            animate={{ y: [0, -300, 420], opacity: [1, 1, 1] }} // Moves up first, then slides back down
+            transition={{ duration: 5, times: [0, 0.5, 1], ease: "easeInOut" }} // Smooth movement
+          />
+          
+          
           )}
 
           <h2 className="text-3xl font-bold leading-tight">
@@ -92,7 +94,7 @@ function Home() {
             className="mt-10 w-40"
             initial={{ y: -100, opacity: 0 }}
             animate={{ y: 180, opacity: 1 }}
-            transition={{ duration: 1.5, ease: "easeOut" }}
+            transition={{ duration: 5, ease: "easeOut" }}
             onAnimationComplete={() => setShowNewImage(true)}
           />
         ) : (
