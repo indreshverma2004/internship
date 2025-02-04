@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { motion, useScroll } from "framer-motion"; 
 import topImage from "../assets/originalcap.png"; 
 import bottomImage from "../assets/bottle down.png"; 
-import newBottomImage from "../assets/full bottle.png"; // Replace with your new image 
+import newBottomImage from "../assets/full bottle.png";
 import leftImage from "../assets/newbottle.png"; 
 import rightImage from "../assets/newbottle.png"; 
 import newLeftImage from "../assets/hand bottle.png"; 
