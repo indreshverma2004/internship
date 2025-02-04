@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { motion, useScroll } from "framer-motion"; 
 import topImage from "../assets/originalcap.png"; 
 import bottomImage from "../assets/bottle down.png"; 
-import newBottomImage from "../assets/full bottle.png";
+import newBottomImage from "../assets/full bottle.png"; // Replace with your new image 
 import leftImage from "../assets/newbottle.png"; 
 import rightImage from "../assets/newbottle.png"; 
 import newLeftImage from "../assets/hand bottle.png"; 
@@ -61,7 +61,7 @@ function Home() {
           className="relative w-96 h-96 border-2 border-blue-300 rounded-full flex flex-col items-center justify-center p-5"
           initial={{ scale: 0.5, backgroundColor: "#ffffff" }}
           animate={{ scale: 0.9, backgroundColor: "#ffffff" }}
-          transition={{ duration: 2, ease: "easeInOut" }}
+          transition={{ duration: 3, ease: "easeInOut" }}
         >
           {/* Animated Top Image */}
           {!showNewImage && (
