@@ -10,6 +10,8 @@ import image1 from "../assets/bluebottle.png";
 import image2 from "../assets/black bottle.png"; 
 import image3 from "../assets/newbottle2.png";
 import fullWidthImage from "../assets/background.png";  // Add full-width image
+import Footer from "./Footer";
+
 
 function Home() {
   // Scroll hook to detect scroll position
@@ -38,7 +40,7 @@ function Home() {
         <motion.div 
           className="relative w-96 h-96 border-2 border-blue-300 rounded-full flex flex-col items-center justify-center p-5"
           initial={{ scale: 0.5, backgroundColor: "#ffffff" }}  // Initial size and color
-          animate={{ scale: 0.80, backgroundColor: "#ffffff" }}  // Final size and color
+          animate={{ scale: 0.90, backgroundColor: "#ffffff" }}  // Final size and color
           transition={{ duration: 2, ease: "easeInOut" }}  // Smooth animation
         >
           {/* Animated Top Image */}
@@ -47,7 +49,7 @@ function Home() {
             alt="Top Bottle" 
             className="absolute w-24"
             initial={{ y: -100, opacity: 0 }}   // Start above
-            animate={{ y: 250, opacity: 1 }}    // Move down into place
+            animate={{ y: 1000, opacity: 1 }}    // Move down into place
             transition={{ duration: 1.5, ease: "easeOut" }}  // Smooth animation
           />
 
@@ -66,17 +68,22 @@ function Home() {
           src={bottomImage} 
           alt="Bottom Bottle" 
           className="mt-10 w-40"
-          style={{ opacity: scrollYProgress }}
+          initial={{ y: -100, opacity: 0 }}   // Start above
+            animate={{ y: 700, opacity: 1 }}    // Move down into place
+            transition={{ duration: 1.5, ease: "easeOut" }}  // Smooth animation
+        //   style={{ opacity: scrollYProgress }}
         />
       </div>
 
-      {/* Floating Side Images */}
-      <div className="absolute top-1/4 left-10 w-20">
-        <img src={leftImage} alt="Left" className="w-full h-auto" />
-      </div>
-      <div className="absolute top-1/4 right-10 w-20">
-        <img src={rightImage} alt="Right" className="w-full h-auto" />
-      </div>
+      {/* Floating Side Images positioned lower but visible on load */}
+<div className="absolute top-[13%] left-10 w-20">
+  <img src={leftImage} alt="Left" className="w-full h-auto" />
+</div>
+
+<div className="absolute top-[13%] right-10 w-20">
+  <img src={rightImage} alt="Right" className="w-full h-auto" />
+</div>
+
 
       {/* Two New Images Below */}
       <div className="flex justify-between mt-20 px-10">
@@ -92,7 +99,7 @@ function Home() {
             src={newRightImage} 
             alt="New Right" 
             className="w-full h-auto object-cover"
-            style={{ opacity: scrollYProgress }}  
+            // style={{ opacity: scrollYProgress }}  
           />
         </div>
       </div>
@@ -170,6 +177,8 @@ function Home() {
           className="w-full h-auto object-cover"
         />
       </div>
+
+      <Footer/>
     </div>
   );
 }
