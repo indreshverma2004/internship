@@ -1,19 +1,21 @@
-import React from "react";
-import { motion, useScroll } from "framer-motion";
-import topImage from "../assets/bottle cap.png";
-import bottomImage from "../assets/bottle down.png";
-import leftImage from "../assets/newbottle.png";
-import rightImage from "../assets/newbottle.png";
-import newLeftImage from "../assets/hand bottle.png";
-import newRightImage from "../assets/written.png";
-import image1 from "../assets/bluebottle.png";
-import image2 from "../assets/black bottle.png";
-import image3 from "../assets/newbottle2.png";
-import fullWidthImage from "../assets/background.png";
+import React, { useState } from "react"; 
+import { motion, useScroll } from "framer-motion"; 
+import topImage from "../assets/originalcap.png"; 
+import bottomImage from "../assets/bottle down.png"; 
+import newBottomImage from "../assets/full bottle.png"; // Replace with your new image 
+import leftImage from "../assets/newbottle.png"; 
+import rightImage from "../assets/newbottle.png"; 
+import newLeftImage from "../assets/hand bottle.png"; 
+import newRightImage from "../assets/written.png"; 
+import image1 from "../assets/bluebottle.png"; 
+import image2 from "../assets/black bottle.png"; 
+import image3 from "../assets/newbottle2.png"; 
+import fullWidthImage from "../assets/background.png"; 
 import Footer from "./Footer";
 
 function Home() {
   const { scrollYProgress } = useScroll();
+  const [showNewImage, setShowNewImage] = useState(false);
 
   return (
     <div className="relative min-h-screen bg-white">
@@ -32,7 +34,7 @@ function Home() {
         </div>
       </nav>
 
-      {/* Floating Side Images (Positioned at the top, visible on load) */}
+      {/* Floating Side Images */}
       <div className="absolute top-[13%] left-20 w-40">
         <img src={leftImage} alt="Left" className="w-full h-auto" />
       </div>
@@ -62,14 +64,16 @@ function Home() {
           transition={{ duration: 2, ease: "easeInOut" }}
         >
           {/* Animated Top Image */}
-          <motion.img 
-            src={topImage} 
-            alt="Top Bottle" 
-            className="absolute w-24"
-            initial={{ y: -100, opacity: 0 }}
-            animate={{ y: 420, opacity: 1 }}
-            transition={{ duration: 1.5, ease: "easeOut" }}
-          />
+          {!showNewImage && (
+            <motion.img 
+              src={topImage} 
+              alt="Top Bottle" 
+              className="absolute w-24"
+              initial={{ y: -100, opacity: 0 }}
+              animate={{ y: 420, opacity: 1 }}
+              transition={{ duration: 1.5, ease: "easeOut" }}
+            />
+          )}
 
           <h2 className="text-3xl font-bold leading-tight">
             The Ultimate Companion for Hydration
@@ -81,14 +85,24 @@ function Home() {
         </motion.div>
 
         {/* Bottom Image */}
-        <motion.img 
-          src={bottomImage} 
-          alt="Bottom Bottle" 
-          className="mt-10 w-40"
-          initial={{ y: -100, opacity: 0 }}
-          animate={{ y: 180, opacity: 1 }}
-          transition={{ duration: 1.5, ease: "easeOut" }}
-        />
+        {!showNewImage ? (
+          <motion.img 
+            src={bottomImage} 
+            alt="Bottom Bottle" 
+            className="mt-10 w-40"
+            initial={{ y: -100, opacity: 0 }}
+            animate={{ y: 180, opacity: 1 }}
+            transition={{ duration: 1.5, ease: "easeOut" }}
+            onAnimationComplete={() => setShowNewImage(true)}
+          />
+        ) : (
+          <motion.img 
+            src={newBottomImage} 
+            alt="New Bottom Bottle" 
+            className="mt-6 w-40 z-10" 
+            style={{ transform: 'scale(0.7)', objectFit: 'contain' }} 
+          />
+        )}
       </div>
 
       {/* Hydration Essentials Section */}
@@ -127,7 +141,7 @@ function Home() {
         <img src={fullWidthImage} alt="Full Width Image" className="w-full h-auto object-cover" />
       </div>
 
-      <Footer/>
+      <Footer />
     </div>
   );
 }
