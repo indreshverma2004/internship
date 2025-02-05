@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { motion, useScroll } from "framer-motion"; 
 import { Link } from "react-router-dom"; 
-import topImage from "../assets/or1.png"; 
-import bottomImage from "../assets/or2.png"; 
+import topImage from "../assets/uparor.png"; 
+import bottomImage from "../assets/nicheor.png"; 
 import newBottomImage from "../assets/or3.png"; 
 import leftImage from "../assets/newbottle.png"; 
 import rightImage from "../assets/newbottle.png"; 
@@ -23,9 +23,8 @@ function Home() {
   };
 
   useEffect(() => {
-    // Define scrolling functionality
-    const scrollDuration = 3000; // Total duration in milliseconds (10 seconds)
-    const scrollHeight = 800;
+    const scrollDuration = 3000; 
+    const scrollHeight = 700;
 
     let startTime = null;
 
@@ -41,12 +40,10 @@ function Home() {
       }
     };
 
-    // Start scrolling after 2 seconds
     const scrollTimeout = setTimeout(() => {
       requestAnimationFrame(scrollStep);
     }, 4000);
 
-    // Cleanup function
     return () => clearTimeout(scrollTimeout);
   }, []);
 
@@ -106,14 +103,15 @@ function Home() {
             We believe in the power of hydration. <br /> Our mission is simple yet vital.
           </p>
         </motion.div>
+      
 
         {!showNewImage && (
           <motion.img 
             src={topImage} 
             alt="Top Bottle" 
-            className="absolute w-24"
+            className="absolute w-20"
             initial={{ y: -500, opacity: 1 }} 
-            animate={{ y: [-330, -600, 50], opacity: [0.9, 1, 1] }} 
+            animate={{ y: [-270, -600, 50], opacity: [0.9, 1, 1] }} 
             transition={{ duration: 5, delay: 1.5, times: [0, 0.5, 1], ease: "easeInOut" }} 
           />
         )}
@@ -123,7 +121,7 @@ function Home() {
             src={bottomImage} 
             alt="Bottom Bottle" 
             className="mt-10 w-40"
-            initial={{ y: -200, opacity: 1 }}
+            initial={{ y: -150, opacity: 1 }}
             animate={{ y: 180, opacity: 1 }}
             transition={{ duration: 5, delay: 1.5, ease: "easeOut" }}
             onAnimationComplete={() => setShowNewImage(true)}
