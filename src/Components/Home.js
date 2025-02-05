@@ -1,4 +1,4 @@
-import React, { useState } from "react"; 
+import React, { useState, useEffect } from "react";
 import { motion, useScroll } from "framer-motion"; 
 import { Link } from "react-router-dom"; 
 import topImage from "../assets/or1.png"; 
@@ -21,6 +21,34 @@ function Home() {
   const toggleDarkMode = () => {
     setIsDarkMode(!isDarkMode);
   };
+
+  useEffect(() => {
+    // Define scrolling functionality
+    const scrollDuration = 3000; // Total duration in milliseconds (10 seconds)
+    const scrollHeight = 800;
+
+    let startTime = null;
+
+    const scrollStep = (timestamp) => {
+      if (!startTime) startTime = timestamp;
+      const progress = (timestamp - startTime) / scrollDuration;
+      const scrollPosition = Math.min(scrollHeight * progress, scrollHeight);
+
+      window.scrollTo(0, scrollPosition);
+
+      if (progress < 1) {
+        requestAnimationFrame(scrollStep);
+      }
+    };
+
+    // Start scrolling after 2 seconds
+    const scrollTimeout = setTimeout(() => {
+      requestAnimationFrame(scrollStep);
+    }, 4000);
+
+    // Cleanup function
+    return () => clearTimeout(scrollTimeout);
+  }, []);
 
   return (
     <div className={`relative min-h-screen ${isDarkMode ? 'bg-gray-800 text-white' : 'bg-white text-black'}`}>
