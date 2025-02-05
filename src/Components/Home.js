@@ -3,7 +3,7 @@ import { motion, useScroll } from "framer-motion";
 import { Link } from "react-router-dom"; 
 import topImage from "../assets/uparor.png"; 
 import bottomImage from "../assets/nicheor.png"; 
-import newBottomImage from "../assets/or3.png"; 
+import newBottomImage from "../assets/real.png"; 
 import leftImage from "../assets/newbottle.png"; 
 import rightImage from "../assets/newbottle.png"; 
 import newLeftImage from "../assets/hand bottle.png"; 
